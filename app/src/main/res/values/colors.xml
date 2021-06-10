@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="bgPrimary">#EDF1F8</color>
+    <color name="bluePrimary">#203DD1</color>
+    <color name="greyPrimary">#8D8D8D</color>
+    <color name="whiteSecondary">#F1F2F5</color>
+
+    <color name="blackPrimary">#21272C</color>
+    <color name="lavender">#E8EAF6</color>
+    <color name="whitePrimary">#FFFFFFFF</color>
+    <color name="btn_blue_primary">#FFFFFFFF</color>
+    <color name="bg_layout_card">#FFFFFFFF</color>
+    <color name="blackAbsolute">#000</color>
+    <color name="whiteAbsolute">#FFF</color>
+    <color name="hintGray">#8D8D8D</color>
+    <color name="flowerblue">#9DCBFD</color>
+    <color name="steelblue">#4D6D95</color>
+
+
+    <color name="hintColor">#7921272C</color>
+    <color name="blueSecondary">#2595F5</color>
+    <color name="greySecondary">#F0F3FF</color>
+    <color name="div">#EDEDED</color>
+    <color name="greenPrimary">#1ABC9C</color>
+    <color name="greenSecondary">#007D64</color>
+    <color name="redSecondary">#D1206B</color>
+    <color name="redPrimary">#ffff0000</color>
+    <color name="ic_statusbg">#EFEFEF</color>
+    <color name="transparant">#00000000</color>
+
+    <color name="mood">#fcf2f2</color>
+    <color name="greenmood">#a4e4d1</color>
+    <color name="graymood">#95b4c9</color>
+
+    <color name="heart_primary_color">#da4439</color>
+    <color name="heart_secondary_color">#8a098c</color>
+    <color name="facebook_secondary_color">#3b5998</color>
+    <color name="facebook_primary_color">#dfe3ee</color>
+    <color name="twitter_primary_color">#667580</color>
+    <color name="twitter_secondary_color">#CCD6DD</color>
+    <color name="gold">#F9A602</color>
+
+
+    <color name="bottomNavigationTextColor">#B2B2B2</color>
+    <color name="bottomNavigationTintColor">#B2B2B2</color>
+    <color name="bottomNavigationSelectedColor">#FC4926</color>
+    <color name="statusBarColor">#000</color>
+    <color name="whiteBodyColor">#FCFCFC</color>
+    <color name="darkTextColor">#020000</color>
+    <color name="primaryTextColor">#019AE8</color>
+    <color name="whiteTextColor">#fff</color>
+    <color name="frutorial_title">#904c4c4c</color>
+    <color name="semi_card_green">#8021E8AC</color>
+    <color name="semi_card_red">#80FF0000</color>
+
+    <!--colors for light mode-->
+    <color name="contentBodyColor">#E8EAF6</color>
+    <color name="contentBodyColor2">#020000</color>
+    <color name="contentTextColor">#020000</color>
+    <color name="miniTitleColor">#6F6A6A</color>
+    <color name="bottomNavigationBackground">#F7F7F7</color>
+
+    <!--gradient colors-->
+    <color name="gradientOrange">#FF416C</color>
+    <color name="gradientViolet">#8A52E9</color>
+    <color name="gradientLightYellow">#FFA72F</color>
+    <color name="gradientLightOrange">#FF641A</color>
+    <color name="gradientLightYellow2">#FFC92B</color>
+    <color name="gradientLightOrange2">#FF7765</color>
+    <color name="gradientOrange3">#F7A23C</color>
+    <color name="gradientLightBlue">#376DF6</color>
+    <color name="gradientLightGreen">#21E8AC</color>
+
+
+    <color name="sort">#2196F3</color>
+    <color name="portal">#673AB7</color>
+    <color name="dashboard">#E91E63</color>
+    <color name="help">#4CAF50</color>
+    <color name="profile">#FF641A</color>
+</resources>

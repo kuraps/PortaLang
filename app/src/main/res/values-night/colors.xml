@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--colors for dark mode-->
+    <color name="contentBodyColor">#000</color>
+    <color name="contentTextColor">#fff</color>
+    <color name="bottomNavigationBackground">#000</color>
+    <color name="miniTitleColor">#fff</color>
+    <color name="contentBodyColor2">#fff</color>
+
+    <color name="black">#FFFFFFFF</color>
+    <color name="white">#FF000000</color>
+    <color name="blackPrimary">#FFFFFFFF</color>
+    <color name="whitePrimary">#FF000000</color>
+    <color name="whiteSecondary">#17181A</color>
+    <color name="lavender">#FF000000</color>
+    <color name="btn_blue_primary">#FFFFFFFF</color>>
+    <color name="blackAbsolute">#000</color>
+    <color name="whiteAbsolute">#FFF</color>
+    <color name="mood">#17181A</color>
+    <color name="bg_layout_card">#26272B</color>
+    <color name="hintGray">#80b7b7b7</color>
+    <color name="flowerblue">#9DCBFD</color>
+    <color name="steelblue">#4D6D95</color>
+
+
+</resources>

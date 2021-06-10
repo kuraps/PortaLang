@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tcodng.portalang">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PortaLang">
+        <activity android:name=".FAQs"></activity>
+        <activity android:name=".FragmentHelp" />
+        <activity android:name=".UserProfileEdit" />
+        <activity android:name=".UserProfile" />
+        <activity android:name=".UserReportFoundingC" />
+        <activity android:name=".UserReportFoundingB" />
+        <activity android:name=".UserReportFoundingA" />
+        <activity android:name=".UserForgotPassword" />
+        <activity android:name=".UserReportMissingC" />
+        <activity android:name=".UserReportMissingB" />
+        <activity android:name=".UserReportMissingA" />
+        <activity android:name=".Settings" />
+        <activity android:name=".NoInternet" />
+        <activity android:name=".UserRegisterSuccess" />
+        <activity android:name=".UserPortal" />
+        <activity android:name=".UserDashboard" />
+        <activity android:name=".ApplicationAgreements" />
+        <activity android:name=".UserRegisterB" />
+        <activity android:name=".UserRegisterA" />
+        <activity android:name=".UserLogin" />
+        <activity android:name=".GetStarted" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".SplashAct" />
+        <activity android:name=".Welcome">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
