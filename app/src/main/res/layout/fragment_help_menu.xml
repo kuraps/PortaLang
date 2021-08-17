@@ -42,7 +42,7 @@
                 android:fontFamily="@font/mbold"
                 android:text="FAQs"
                 android:textColor="@color/blackPrimary"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/icon"
                 app:layout_constraintTop_toTopOf="@+id/icon" />
@@ -55,7 +55,7 @@
                 android:fontFamily="@font/mregular"
                 android:text="Find intelligent answers instantly"
                 android:textColor="@color/blackPrimary"
-                android:textSize="16sp"
+                android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/icon"
                 app:layout_constraintTop_toBottomOf="@+id/title" />

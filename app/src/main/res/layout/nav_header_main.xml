@@ -1,38 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/nav_header_height"
-    android:background="@drawable/bg_gradient_primary_blue"
+    android:layout_height="250dp"
     android:gravity="bottom"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <ImageView
-        android:id="@+id/picture"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@drawable/icon_nopic" />
+
+    <io.github.florent37.shapeofview.shapes.RoundRectView
+        android:id="@+id/roundRectView"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shape_roundRect_bottomLeftRadius="40dp">
+
+        <ImageView
+            android:id="@+id/ava"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icon_nopic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:alpha="0.8"
+            android:background="@drawable/bg_overlay_getstarted"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </io.github.florent37.shapeofview.shapes.RoundRectView>
 
     <TextView
-        android:id="@+id/name"
-        android:fontFamily="@font/mbold"
-        android:layout_width="match_parent"
+        android:id="@+id/names"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="Kuraps NoTail"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:layout_marginStart="21dp"
+        android:elevation="1dp"
+        android:fontFamily="@font/mbold"
+        android:paddingTop="24dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintBottom_toTopOf="@+id/email"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/email"
-        android:fontFamily="@font/mregular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="kuraps@gmail.com" />
+        android:layout_marginStart="21dp"
+        android:layout_marginBottom="10dp"
+        android:elevation="1dp"
+        android:fontFamily="@font/mregular"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

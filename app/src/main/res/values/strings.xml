@@ -6,7 +6,7 @@
     <string name="help_you_find">Help You Find</string>
     <string name="the_missing_people"> The Missing People</string>
     <string name="login_btn">SIGN IN</string>
-    <string name="loading_btn">LOADING ...</string>
+    <string name="loading_btn">LOADING …</string>
     <string name="no_username">Fill your Username</string>
     <string name="no_email">Fill your Email</string>
     <string name="no_password">Fill your Password</string>
@@ -84,6 +84,11 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="featured">Unggulan</string>
+    <string name="missing_ppl_card_title">Missing People</string>
+    <string name="missing_ppl_card_desc">Report missing people, Fill missing people data</string>
+    <string name="about_title">About</string>
+    <string name="about_desc">Informasi pengembang dan profile</string>
     <string name="action_settings">Settings</string>
     <string name="indo">Indonesia Langguage</string>
     <string name="eng">English Langguage</string>
@@ -118,4 +123,41 @@
     <string name="no_internet_title">Couldnt connect to Internet</string>
     <string name="no_internet_titlee">Please check your network Settings.</string>
     <string name="retry_btn">RETRY</string>
+
+
+    <string name="sweet_exit_dialog_title">Hello, </string>
+    <string name="sweet_exit_dialog_body">Are you sure to Sign out ?</string>
+    <string name="sweet_exit_dialog_confirm">Sign out</string>
+    <string name="sweet_understand">Understand</string>
+    <string name="sweet_exit_dialog_cancel">Cancel</string>
+    <string name="sweet_loading">Loading …</string>
+    <string name="sweet_uploading">Uploading data …</string>
+    <string name="sweet_signin">Sign in …</string>
+    <string name="sweet_regist">Register account …</string>
+    <string name="login_ok">Login Success</string>
+    <string name="login_fail">Login Failed</string>
+    <string name="no_db">No Database found!</string>
+    <string name="missing">MISSING</string>
+    <string name="portalnews">Portal News</string>
+    <string name="invalid_data">Invalid data!</string>
+    <string name="username_already">Already username</string>
+    <string name="email_already">Already email</string>
+    <string name="miss">Missing</string>
+    <string name="found">Found</string>
+    <string name="back">Back</string>
+    <string name="print_success">Saved on DCIM folder!</string>
+    <string name="loading_reg">LOADING…</string>
+    <string name="upload_reg">UPLOADING…</string>
+    <string name="pleasewait_reg">PLEASE WAIT…</string>
+    <string name="update_reg">UPDATING…</string>
+    <string name="no_photos">No photo chosen</string>
+    <string name="your_pw">Your Password is : </string>
+    <string name="cekpw">Check your password</string>
+    <string name="people">PEOPLE</string>
+    <string name="share_tv">Hey there! Iam using PortaLang for searching Missing People. You can download PortaLang on PlayStore!</string>
+
+
+    <string name="sweet_missing_title">Requirements to activate Face Recognition, the missing people photo must have a clear and red background then System can do Recognition</string>
+    <string name="alert_found_title">Hello, </string>
+    <string name="alert_found_desc">If you dont know the missing persons data, you can fill in the data carelessly</string>
 </resources>

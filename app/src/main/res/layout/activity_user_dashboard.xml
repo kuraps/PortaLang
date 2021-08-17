@@ -46,9 +46,8 @@
         android:foreground="?attr/selectableItemBackground"
         app:menu="@menu/master_bottom_navigation"
         app:elevation="10dp"
-        app:labelVisibilityMode="labeled"
+        app:labelVisibilityMode="unlabeled"
         app:itemIconTint="@color/bottom_navigation_color"
-        app:itemTextColor="@color/bottom_navigation_color"
         app:itemBackground="@color/bottomNavigationBackground"/>
     <eightbitlab.com.blurview.BlurView
         android:id="@+id/blurView"

@@ -1,7 +1,6 @@
 package com.tcodng.portalang;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,12 +18,10 @@ public class UserReportMissingA extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_report_missing);
-
         btn_sure = findViewById(R.id.sure);
         btn_back = findViewById(R.id.btn_back);
         tv_agreements = findViewById(R.id.agreements_text);
         acc_aggreement = findViewById(R.id.acc_aggreement);
-
         btn_sure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

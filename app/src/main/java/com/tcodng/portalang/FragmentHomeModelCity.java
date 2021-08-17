@@ -27,4 +27,5 @@ public class FragmentHomeModelCity {
     public void setCases(String cases) {
         this.cases = cases;
     }
+
 }

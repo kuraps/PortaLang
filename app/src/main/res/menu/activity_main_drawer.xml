@@ -17,12 +17,8 @@
             android:icon="@drawable/ic_baseline_settings_24"
             android:title="Settings" />
         <item
-            android:id="@+id/nav_dark_mode"
-            android:icon="@drawable/ic_baseline_dark_mode_24"
-            android:title="Dark Mode" />
-        <item
-            android:id="@+id/nav_about"
-            android:icon="@drawable/ic_baseline_info_24"
-            android:title="About" />
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_baseline_logoutred_24"
+            android:title="Sign Out" />
     </group>
 </menu>

@@ -12,7 +12,6 @@ public class WelcomeViewPager extends ViewPager{
 
     public WelcomeViewPager(Context context) {
         super(context);
-        // TODO Auto-generated constructor stub
     }
 
     public WelcomeViewPager(Context context, AttributeSet attrs) {

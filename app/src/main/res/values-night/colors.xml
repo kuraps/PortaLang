@@ -21,6 +21,7 @@
     <color name="hintGray">#80b7b7b7</color>
     <color name="flowerblue">#9DCBFD</color>
     <color name="steelblue">#4D6D95</color>
+    <color name="df_transparent_black_background">#80000000</color>
 
 
 </resources>

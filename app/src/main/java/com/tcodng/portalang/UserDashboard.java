@@ -4,61 +4,88 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.os.Build;
-import android.os.Bundle;
 import androidx.annotation.NonNull;
-
 import com.github.ybq.android.spinkit.sprite.Sprite;
 import com.github.ybq.android.spinkit.style.Wave;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import androidx.cardview.widget.CardView;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AppCompatDelegate;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import net.colindodd.gradientlayout.GradientRelativeLayout;
-
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import eightbitlab.com.blurview.BlurView;
 import eightbitlab.com.blurview.RenderScriptBlur;
 
-public class UserDashboard extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class UserDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     BlurView blurView;
+    String USERNAME_KEY = "usernamekey";
+    String username_key = "";
+    String username_key_new = "";
+    TextView names,email;
+    ImageView ava;
+    DatabaseReference reference;
+
     private BottomNavigationView bottomNavigationView;
         private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
                 = new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment = null;;
+                names = (TextView) findViewById(R.id.names);
+                email =(TextView)  findViewById(R.id.email);
+                ava = (ImageView) findViewById(R.id.ava);
                 blurView=(BlurView)findViewById(R.id.blurView);
                 ProgressBar progressBar = (ProgressBar)findViewById(R.id.progress);
                 Sprite wave = new Wave();
                 progressBar.setIndeterminateDrawable(wave);
+                getUsernameLocal();
                 switch (item.getItemId()) {
                     case R.id.nav_menu:
                         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
                         drawer.openDrawer(GravityCompat.START);
+                        reference = FirebaseDatabase.getInstance().getReference()
+                                .child("Users").child(username_key_new);
+                        reference.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                for (DataSnapshot Snapshot : dataSnapshot.getChildren()) {
+
+                                    Picasso.with(getApplicationContext())
+                                            .load(dataSnapshot.child("avatar").getValue().toString())
+                                            .centerCrop()
+                                            .fit()
+                                            .placeholder(R.drawable.icon_nopic).error(R.drawable.icon_nopic)
+                                            .into(ava);
+                                    names.setText(dataSnapshot.child("name").getValue().toString());
+                                    email.setText(dataSnapshot.child("email").getValue().toString());
+                                }
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                            }
+                        });
                         break;
                     case R.id.nav_portal:
                         fragment = new FragmentPortal();
@@ -119,22 +146,17 @@ public class UserDashboard extends AppCompatActivity
         }
         return false;
     }
-
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-
             setContentView(R.layout.activity_user_dashboard);
             loadFragment(new FragmentHome());
-            //loading the default fragment
             if (!isNetworkAvailable(this)) {
                 Toast.makeText(this, "No Internet connection", Toast.LENGTH_LONG).show();
-                // pindah activty lain
                 Intent gogetStarted = new Intent(UserDashboard.this, NoInternet.class);
                 startActivity(gogetStarted);
                 finish();
             }
-
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -149,20 +171,17 @@ public class UserDashboard extends AppCompatActivity
             CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) bottomNavigationView.getLayoutParams();
             layoutParams.setBehavior(new BottomNavigationBehavior());
             bottomNavigationView.setSelectedItemId(R.id.nav_home);
-
         }
 
+    public void getUsernameLocal(){
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(USERNAME_KEY, MODE_PRIVATE);
+        username_key_new = sharedPreferences.getString(username_key, "");
+    }
     public void blurBackground(){
         float radius = 22f;
-
         View decorView = getWindow().getDecorView();
-        //ViewGroup you want to start blur from. Choose root as close to BlurView in hierarchy as possible.
         ViewGroup rootView = (ViewGroup) decorView.findViewById(android.R.id.content);
-        //Set drawable to draw in the beginning of each blurred frame (Optional).
-        //Can be used in case your layout has a lot of transparent space and your content
-        //gets kinda lost after after blur is applied.
         Drawable windowBackground = decorView.getBackground();
-
         blurView.setupWith(rootView)
                 .setFrameClearDrawable(windowBackground)
                 .setBlurAlgorithm(new RenderScriptBlur(this))
@@ -194,59 +213,57 @@ public class UserDashboard extends AppCompatActivity
             }
         }
 
-        @SuppressWarnings("StatementWithEmptyBody")
         @Override
         public boolean onNavigationItemSelected(MenuItem item) {
-            // Handle navigation view item clicks here.
             int id = item.getItemId();
-
+            Fragment fragment = null;;
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             if (id == R.id.nav_profile) {
-                Intent dashboard = new Intent(UserDashboard.this, UserPortal.class);
-                startActivity(dashboard);
-            } else if (id == R.id.nav_share) {
+                bottomNavigationView.setSelectedItemId(R.id.nav_profile);
+                drawer.closeDrawer(GravityCompat.START);
+            }else if (id == R.id.nav_share){
                 Intent shareIntent = new Intent();
+                String url_ps = ("");
                 shareIntent.setAction(Intent.ACTION_SEND);
-                shareIntent.putExtra(Intent.EXTRA_TEXT, "Hei saya baru saja kehilangan orang hilang!, Tolong bantu saya. Yuk download  aplikasi PORTALANG di Playsotre");
+                shareIntent.putExtra(Intent.EXTRA_TEXT, getApplicationContext().getString(R.string.share_tv)+url_ps);
                 shareIntent.setType("text/plain");
                 startActivity(shareIntent);
-            } else if (id == R.id.nav_about) {
-                Intent dashboard = new Intent(UserDashboard.this, UserPortal.class);
-                startActivity(dashboard);
-            }else if (id == R.id.nav_settings) {
-                Intent dashboard = new Intent(UserDashboard.this, Settings.class);
-                startActivity(dashboard);
-            }  else if (id == R.id.nav_dark_mode) {
-                DarkModePrefManager darkModePrefManager = new DarkModePrefManager(this);
-                darkModePrefManager.setDarkMode(!darkModePrefManager.isNightMode());
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                recreate();
-            }
+                drawer.closeDrawer(GravityCompat.START);
+            }else if (id == R.id.nav_settings){
+                Intent settings = new Intent(UserDashboard.this, Settings.class);
+                startActivity(settings);
+                drawer.closeDrawer(GravityCompat.START);
+            }else if (id == R.id.logout){
+                new SweetAlertDialog(UserDashboard.this, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText(getResources().getString(R.string.sweet_exit_dialog_title)+" "+username_key_new)
+                        .setContentText(getResources().getString(R.string.sweet_exit_dialog_body))
+                        .setConfirmText(getResources().getString(R.string.sweet_exit_dialog_confirm))
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.dismissWithAnimation();
+                                SharedPreferences sharedPreferences = UserDashboard.this.getSharedPreferences(USERNAME_KEY, MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putString(username_key, null);
+                                editor.apply();
+                                Intent gotosignin = new Intent(UserDashboard.this, GetStarted.class);
+                                gotosignin.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                gotosignin.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(gotosignin);
+                                finish();
+                            }
 
-            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                        })
+                        .setCancelButton((getResources().getString(R.string.sweet_exit_dialog_cancel)), new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.dismissWithAnimation();
+                            }
+                        })
+                        .show();
+            }
             drawer.closeDrawer(GravityCompat.START);
             return true;
-        }
-
-        //create a seperate class file, if required in multiple activities
-        public void setDarkMode(Window window) {
-            if (new DarkModePrefManager(this).isNightMode()) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                changeStatusBar(0, window);
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                changeStatusBar(1, window);
-            }
-        }
-
-        public void changeStatusBar(int mode, Window window) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.setStatusBarColor(this.getResources().getColor(R.color.white));
-                //white mode
-                if (mode == 1) {
-                    window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-                }
-            }
         }
 
         public static boolean isNetworkAvailable(Context context) {

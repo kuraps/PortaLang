@@ -2,7 +2,6 @@ package com.tcodng.portalang;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,13 +13,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.mahfa.dnswitch.DayNightSwitch;
 import com.mahfa.dnswitch.DayNightSwitchAnimListener;
 import com.mahfa.dnswitch.DayNightSwitchListener;
-
 import java.util.Calendar;
-
 import nl.bryanderidder.themedtogglebuttongroup.ThemedButton;
 import nl.bryanderidder.themedtogglebuttongroup.ThemedToggleButtonGroup;
 
@@ -30,11 +26,9 @@ public class Settings extends AppCompatActivity {
     TextView mode_tema,hello_title,hello_desc;
     LinearLayout btn2;
     Button btn1;
-
     public static final String TAG = "Settings";
     public static final String KEY_DAY_NIGHT_SWITCH_STATE = "day_night_switch_state";
     private DayNightSwitch day_night_switch;
-
     String USERNAME_KEY = "usernamekey";
     String username_key = "";
     String username_key_new = "";
@@ -42,7 +36,6 @@ public class Settings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
         getUsernameLocal();
         btngrup = findViewById(R.id.cards);
         indo = findViewById(R.id.indo);
@@ -54,7 +47,6 @@ public class Settings extends AppCompatActivity {
         btn1 = findViewById(R.id.btn1);
         if (!isNetworkAvailable(this)) {
             Toast.makeText(this, "No Internet connection", Toast.LENGTH_LONG).show();
-            // pindah activty lain
             Intent gogetStarted = new Intent(Settings.this, SplashAct.class);
             startActivity(gogetStarted);
             finish();
@@ -79,7 +71,6 @@ public class Settings extends AppCompatActivity {
         hello_title.setText(getResources().getString(R.string.hello) + " " + username_key_new);
         day_night_switch = (DayNightSwitch) findViewById(R.id.day_night_switch);
         day_night_switch.setDuration(450);
-
         if (cekTema()) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             mode_tema.setText(getResources().getString(R.string.settings_darkmode_desc));
@@ -89,7 +80,6 @@ public class Settings extends AppCompatActivity {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             mode_tema.setText(getResources().getString(R.string.settings_lightmode));
         }
-
         day_night_switch.setListener(new DayNightSwitchListener() {
             @Override
             public void onSwitch(boolean is_night) {
@@ -110,10 +100,8 @@ public class Settings extends AppCompatActivity {
                     mode_tema.setText(getResources().getString(R.string.settings_lightmode));
                     refreshAct();
                 }
-
             }
         });
-
         day_night_switch.setAnimListener(new DayNightSwitchAnimListener() {
             @Override
             public void onAnimStart() {
@@ -134,12 +122,11 @@ public class Settings extends AppCompatActivity {
         if (savedInstanceState != null
                 && savedInstanceState.containsKey(KEY_DAY_NIGHT_SWITCH_STATE))
             day_night_switch.setIsNight(savedInstanceState.getBoolean(KEY_DAY_NIGHT_SWITCH_STATE), true);
-
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
+                btn2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                    }
         });
         indo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -182,7 +169,6 @@ public class Settings extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
         Intent intent = new Intent(Settings.this, SplashAct.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

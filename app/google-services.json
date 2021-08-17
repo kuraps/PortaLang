@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "760933058042",
+    "project_id": "portalang-e909a",
+    "storage_bucket": "portalang-e909a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:760933058042:android:aa7bbffe8f5c8f2e491043",
+        "android_client_info": {
+          "package_name": "com.tcodng.portalang"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "760933058042-8b9c7uma9aaaos7ehu9ldraom8s40h5u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5JxkHMwnnogVsLPlf2O2MC7m6mwvclRc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "760933058042-8b9c7uma9aaaos7ehu9ldraom8s40h5u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

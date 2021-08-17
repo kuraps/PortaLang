@@ -7,15 +7,14 @@
 
     <TextView
         android:id="@+id/intro_slidedescription"
-        android:layout_width="wrap_content"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/intro_slidetitle"
         android:layout_marginTop="24dp"
         android:text="Secondary Text"
-        android:textAlignment="center"
         android:fontFamily="@font/mmedium"
-        android:textColor="@color/blackPrimary"
-        android:textSize="22sp"
+        android:textColor="@color/whiteAbsolute"
+        android:textSize="20sp"
         android:layout_marginLeft="24dp"/>
 
     <TextView
@@ -24,21 +23,20 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/intro_slideimg"
         android:paddingTop="10dp"
-        android:text="@string/welcome_adapter_title"
-        android:textColor="@color/blackPrimary"
-        android:textSize="45sp"
+        android:text="Wellcome to Portalang"
+        android:textColor="@color/whiteAbsolute"
+        android:textSize="40sp"
         android:fontFamily="@font/mbold"
         android:layout_marginTop="20dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="30dp"/>
-
     <ImageView
         android:id="@+id/intro_slideimg"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_alignParentTop="true"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="70dp"
         android:scaleType="centerCrop"
         android:src="@drawable/illu_ciank_welcome_a" />
 

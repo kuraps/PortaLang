@@ -16,24 +16,21 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.viewpager.widget.ViewPager;
-
 import java.util.Locale;
 
 public class Welcome extends AppCompatActivity {
     LinearLayout l1,l2;
     TextView tv1;
     Button btn1,btn2;
-    ImageView img1;
-
+    ImageView img1,bg;
     TextView[] tv_dots1;
     WelcomeViewPager vp1;
     WelcomeAdapter intro_slideadapter1;
     int cp_1 = 0;
-    Animation an1,an2,an3,nothing;
+    Animation an1,an2,an3,move;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +42,7 @@ public class Welcome extends AppCompatActivity {
         l2=(LinearLayout)findViewById(R.id.intro_l2);
         img1=(ImageView)findViewById(R.id.intro_btn_start);
         btn2=(Button)findViewById(R.id.intro_btn_next);
+        bg = findViewById(R.id.bg);
         if (restorePrefData()) {
             Intent intent = new Intent(Welcome.this,SplashAct.class);
             startActivity(intent);
@@ -63,27 +61,21 @@ public class Welcome extends AppCompatActivity {
         an1 = AnimationUtils.loadAnimation(this, R.anim.invisible_to_visible);
         an2 = AnimationUtils.loadAnimation(this, R.anim.button_animation);
         an3 = AnimationUtils.loadAnimation(this, R.anim.bounce);
-
+        move = AnimationUtils.loadAnimation(this, R.anim.move);
+        bg.startAnimation(an1);
+        loadmove();
         intro_slideadapter1=new WelcomeAdapter(this);
         vp1.setAdapter(intro_slideadapter1);
         adddots(0);
         vp1.setOnPageChangeListener(viewlistener);
-        //vp1.setClipToPadding(false);
-        //vp1.setPadding(48, 0, 48, 0);
-        //vp1.setPageMargin(0);
         vp1.setPageTransformer(true, new ParallaxViewTransformer(R.id.intro_slideimg));
-        //vp1.setPageTransformer(true, new TransformationZoomOut());
-        //vp1.setPageTransformer(true, new TransformationZoomOut(TransformationZoomOut.TEXT_TAG));
-
         tv1.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 vp1.setCurrentItem(cp_1 + 6);
             }
         });
         l2.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Welcome.this,SplashAct.class);
@@ -93,7 +85,6 @@ public class Welcome extends AppCompatActivity {
             }
         });
         btn2.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 vp1.setCurrentItem(cp_1 + 1);
@@ -102,7 +93,6 @@ public class Welcome extends AppCompatActivity {
     }
 
     ViewPager.OnPageChangeListener viewlistener = new ViewPager.OnPageChangeListener() {
-
         @Override
         public void onPageSelected(int position) {
             // TODO Auto-generated method stub
@@ -114,19 +104,14 @@ public class Welcome extends AppCompatActivity {
                 loaddLastScreen();
             }else {
             }
-
         }
 
         @Override
         public void onPageScrolled(int position, float psotionOffset, int positionOffsetPixels) {
-            // TODO Auto-generated method stub
-
         }
 
         @Override
         public void onPageScrollStateChanged(int state) {
-            // TODO Auto-generated method stub
-
         }
     };
 
@@ -155,8 +140,6 @@ public class Welcome extends AppCompatActivity {
         img1.setVisibility(View.VISIBLE);
         tv1.setVisibility(View.INVISIBLE);
         l1.setVisibility(View.INVISIBLE);
-        // TODO : ADD an animation the getstarted button
-        // setup animation
         l2.startAnimation(an2);
         img1.startAnimation(an1);
         loadnim();
@@ -170,6 +153,15 @@ public class Welcome extends AppCompatActivity {
                 l2.startAnimation(an3);
             }
         },1300);
+    }
+    public void loadmove() {
+        new Handler().postDelayed(new Runnable(){
+            @Override
+            public void run(){
+                move.setRepeatCount(Animation.INFINITE);
+                bg.startAnimation(move);
+            }
+        },1500);
     }
 
     private boolean restorePrefData() {

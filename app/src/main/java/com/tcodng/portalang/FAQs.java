@@ -6,14 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class FAQs extends AppCompatActivity {
 int Click = 0;
-    int Click2 = 0;
+int Click2 = 0;
 TextView search_missing,found_missing;
 LinearLayout push_report,push_found;
 ImageView dropdown,dropdown2;

@@ -7,31 +7,16 @@
     android:background="@color/lavender"
     tools:context=".NoInternet">
 
-    <io.github.florent37.shapeofview.shapes.ArcView
-        app:shape_arc_height="50dp"
-        app:shape_arc_position="bottom"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/bg_gradient_primary_blue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@drawable/bg_gradient_primary_blue"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </io.github.florent37.shapeofview.shapes.ArcView>
     <ImageView
-        android:scaleType="centerCrop"
-        android:id="@+id/icon_illu"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/no_internet_stars"/>
+
+    <ImageView
+        android:id="@+id/icon_illu"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:src="@drawable/illu_no_internet"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +30,7 @@
         android:layout_marginTop="34dp"
         android:fontFamily="@font/mregular"
         android:text="@string/no_internet_title"
-        android:textColor="@color/blackPrimary"
+        android:textColor="@color/whiteAbsolute"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +48,7 @@
         android:lineSpacingExtra="9dp"
         android:text="@string/no_internet_titlee"
         android:textAlignment="center"
-        android:textColor="@color/greyPrimary"
+        android:textColor="@color/whiteAbsolute"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,7 +61,7 @@
         android:layout_marginBottom="16dp"
         android:layout_marginStart="48dp"
         android:layout_marginEnd="48dp"
-        android:background="@drawable/btn_blue_primary"
+        android:background="@drawable/onboarding_button"
         android:fontFamily="@font/mmedium"
         android:text="@string/retry_btn"
         android:textColor="#fff"

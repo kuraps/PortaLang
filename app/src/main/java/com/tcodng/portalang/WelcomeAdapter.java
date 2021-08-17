@@ -55,9 +55,7 @@ public class WelcomeAdapter extends PagerAdapter {
             img.setImageResource(list_images[position]);
             txt1.setText(list_title[position]);
             txt2.setText(list_description[position]);
-
             img.setTag(ParallaxViewTransformer.IMAGE_TAG);
-
             container.addView(view);
             return view;
         }
@@ -66,5 +64,4 @@ public class WelcomeAdapter extends PagerAdapter {
         public void destroyItem(ViewGroup container, int position, Object object) {
             container.removeView((RelativeLayout)object);
         }
-
 }

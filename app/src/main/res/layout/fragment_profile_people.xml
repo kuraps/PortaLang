@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:layout_width="match_parent"
+            android:id="@+id/item_portal"
+            android:layout_height="80dp">
+
+
+            <io.github.florent37.shapeofview.shapes.CircleView
+                android:id="@+id/missing_people_photo_layout"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/icon_nopic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:scaleType="centerCrop"
+                    android:id="@+id/missing_people_photo"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/icon_nopic"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </io.github.florent37.shapeofview.shapes.CircleView>
+
+
+
+            <TextView
+                android:id="@+id/missing_people_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/mbold"
+                android:textColor="@color/blackPrimary"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/missing_people_photo_layout"
+                app:layout_constraintTop_toTopOf="@+id/missing_people_photo_layout" />
+
+            <TextView
+                android:id="@+id/missing_people_characteristic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:fontFamily="@font/mregular"
+                android:lines="1"
+                android:textColor="@color/blackPrimary"
+                android:textSize="13sp"
+                app:layout_constraintStart_toEndOf="@+id/missing_people_photo_layout"
+                app:layout_constraintTop_toBottomOf="@+id/missing_people_name" />
+
+            <TextView
+                android:id="@+id/missing_people_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:fontFamily="@font/mbold"
+                android:textColor="@color/bluePrimary"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/missing_people_photo_layout"
+                app:layout_constraintTop_toBottomOf="@+id/missing_people_characteristic" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

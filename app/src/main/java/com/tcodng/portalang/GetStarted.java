@@ -26,15 +26,12 @@ public class GetStarted extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_started);
-
         if (!isNetworkAvailable(this)) {
             Toast.makeText(this, "No Internet connection", Toast.LENGTH_LONG).show();
-            // pindah activty lain
             Intent gogetStarted = new Intent(GetStarted.this, NoInternet.class);
             startActivity(gogetStarted);
             finish();
         }
-
         top_to_bottom = AnimationUtils.loadAnimation(this, R.anim.top_to_bottom);
         bottom_to_top = AnimationUtils.loadAnimation(this, R.anim.bottom_to_top);
         fade_in = AnimationUtils.loadAnimation(this, R.anim.fade_in);
@@ -47,8 +44,6 @@ public class GetStarted extends AppCompatActivity {
         btn_login = findViewById(R.id.btn_login);
         btn_register = findViewById(R.id.btn_register);
         bg_overlay = findViewById(R.id.get_started_overlay);
-
-        // ANIMASI
         bg_overlay.startAnimation(fade_in);
         porta.startAnimation(top_to_bottom);
         lang.startAnimation(top_to_bottom);
@@ -58,7 +53,6 @@ public class GetStarted extends AppCompatActivity {
         btn_login.startAnimation(bottom_to_top);
         btn_register.startAnimation(bottom_to_top);
         app_version.startAnimation(bottom_to_top);
-
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

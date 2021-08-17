@@ -131,8 +131,8 @@
             android:background="@drawable/btn_blue_primary"
             android:fontFamily="@font/mmedium"
             android:text="@string/login_btn"
-            android:textColor="#fff"
-            android:textSize="22sp"
+            android:textColor="@color/whiteAbsolute"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

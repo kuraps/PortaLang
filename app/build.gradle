@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -29,14 +30,15 @@ android {
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'org.jetbrains:annotations:15.0'
+    implementation 'com.google.firebase:firebase-messaging:22.0.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'io.github.florent37:shapeofview:1.4.7' // shape of view
-    implementation 'androidx.recyclerview:recyclerview:1.2.0' //RecyclerView
+    implementation 'androidx.recyclerview:recyclerview:1.2.1' //RecyclerView
     implementation 'androidx.cardview:cardview:1.0.0' // CardView
     implementation 'com.google.android.material:material:1.3.0' //Material Design
     implementation 'com.github.arimorty:floatingsearchview:2.1.1' //Floating SearchView
@@ -47,10 +49,13 @@ dependencies {
     implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2' //Indicator dots
     implementation 'com.github.varunest:sparkbutton:1.0.6' // SparkButton
     implementation 'com.squareup.picasso:picasso:2.5.2' //PictureDB
-    implementation 'com.google.firebase:firebase-database:19.6.0' //FBDB
-    implementation 'com.google.firebase:firebase-storage:19.2.1' // FBStorage
-    implementation 'com.google.firebase:firebase-firestore:22.0.2' // FireStore
+    implementation 'com.google.firebase:firebase-database:20.0.0' //FBDB
+    implementation 'com.google.firebase:firebase-storage:20.0.0' // FBStorage
+    implementation 'com.google.firebase:firebase-firestore:23.0.1' // FireStore
+    implementation 'com.google.firebase:firebase-auth:21.0.1' //FBDB
     implementation 'com.github.ybq:Android-SpinKit:1.4.0' // Spinner
     implementation 'com.eightbitlab:blurview:1.6.5' // BlurView
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0' // PhotoViewer
+    implementation 'com.google.android.material:material:1.0.0' // BOTTOM SHEET
 
 }

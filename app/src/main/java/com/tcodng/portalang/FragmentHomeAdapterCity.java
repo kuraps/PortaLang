@@ -9,11 +9,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
 import java.util.ArrayList;
+
 public class FragmentHomeAdapterCity extends RecyclerView.Adapter<FragmentHomeAdapterCity.viewHolder> {
 
     Context context;
     ArrayList<FragmentHomeModelCity> arrayList;
+    DatabaseReference reference;
 
     public FragmentHomeAdapterCity(Context context, ArrayList<FragmentHomeModelCity> arrayList) {
         this.context = context;
@@ -29,8 +32,8 @@ public class FragmentHomeAdapterCity extends RecyclerView.Adapter<FragmentHomeAd
     @Override
     public  void onBindViewHolder(FragmentHomeAdapterCity.viewHolder viewHolder,int position) {
         viewHolder.city_name.setText(arrayList.get(position).getName());
+        viewHolder.city_cases.setText(arrayList.get(position).getCases());
         viewHolder.city_icon.setImageResource(arrayList.get(position).getImage());
-
     }
 
     @Override

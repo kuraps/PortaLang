@@ -8,29 +8,26 @@
     tools:showIn="@layout/app_bar_main"
     style="@style/parent.contentLayout">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:src="@drawable/icon_nopic"
+    <io.github.florent37.shapeofview.shapes.DiagonalView
+        app:shape_diagonal_angle="5"
+        app:shape_diagonal_position="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/bg_gradient_primary_blue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <io.github.florent37.shapeofview.shapes.CircleView
-        android:id="@+id/circleView2"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:shape_circle_borderColor="@color/bluePrimary"
-        app:shape_circle_borderWidth="2dp">
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/bg_gradient_primary_blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- YOUR CONTENT -->
-        <ImageView
-            android:id="@+id/avatar"
-            android:layout_width="60dp"
-            android:layout_height="60dp" />
-    </io.github.florent37.shapeofview.shapes.CircleView>
+    </io.github.florent37.shapeofview.shapes.DiagonalView>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
@@ -41,38 +38,462 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <LinearLayout
+                android:padding="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-            <TextView
-                style="@style/viewParent.headerText"
-                android:fontFamily="@font/mbold"
-                android:text="Dashboard" />
 
-            <TextView
-                android:id="@+id/greetings"
-                style="@style/viewParent.headerText.contentText"
-                android:layout_marginBottom="20dp"
-                android:fontFamily="@font/mregular"
-                android:text="Hi, Kuraps, Good Night!" />
+                <io.github.florent37.shapeofview.shapes.CircleView
+                    android:id="@+id/circleView2"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:shape_circle_borderColor="@color/whiteAbsolute"
+                    app:shape_circle_borderWidth="2dp">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/city_adapter"
+                    <!-- YOUR CONTENT -->
+                    <ImageView
+                        android:id="@+id/avatar"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp" />
+                </io.github.florent37.shapeofview.shapes.CircleView>
+
+                <LinearLayout
+                    android:layout_marginStart="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/viewParent.headerText"
+                        android:id="@+id/name"
+                        android:textColor="@color/whiteAbsolute"
+                        android:fontFamily="@font/mbold"
+                        android:text="Dashboard" />
+
+                    <TextView
+                        android:id="@+id/bio"
+                        android:textColor="@color/whiteAbsolute"
+                        style="@style/viewParent.headerText.contentText"
+                        android:layout_marginBottom="20dp"
+                        android:fontFamily="@font/mregular"
+                        android:text="Hi, Kuraps, Good Night!" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="120dp"
-                app:layout_constrainedHeight="true"
-                app:layout_constraintHeight_max="120dp"
-                tools:listitem="@layout/fragment_home_city"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginStart="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:padding="10dp"
+                    android:textSize="16sp"
+                    android:background="@drawable/bg_layout_rounded_white"
+                    android:fontFamily="@font/mbold"
+                    android:id="@+id/greetings"
+                    android:textColor="@color/blackPrimary"
+                    android:text="Good Afternoon" />
+                <TextView
+                    android:layout_marginStart="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:padding="10dp"
+                    android:textSize="16sp"
+                    android:background="@drawable/bg_layout_rounded_white"
+                    android:fontFamily="@font/mbold"
+                    android:id="@+id/settings_app"
+                    android:textColor="@color/blackPrimary"
+                    android:text="@string/settings" />
+
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:id="@+id/city"
+                android:scrollbarFadeDuration="0"
+                android:scrollbars="none"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <io.github.florent37.shapeofview.shapes.RoundRectView
+                            android:id="@+id/view1"
+                            android:background="@color/whiteSecondary"
+                            android:layout_marginEnd="24dp"
+                            android:layout_width="227dp"
+                            android:layout_height="180dp"
+                            app:shape_roundRect_bottomLeftRadius="10dp"
+                            app:shape_roundRect_bottomRightRadius="10dp"
+                            app:shape_roundRect_topLeftRadius="10dp"
+                            app:shape_roundRect_topRightRadius="10dp">
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="wrap_content"
+                                android:background="@color/whiteSecondary"
+                                android:layout_height="180dp">
+
+                                <ImageView
+                                    android:id="@+id/jakarta_ic"
+                                    android:layout_width="227dp"
+                                    android:layout_height="150dp"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/ic_city_jakarta" />
+
+                                <LinearLayout
+                                    android:gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent">
+
+                                    <TextView
+                                        android:id="@+id/tv_jakarta"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:background="@drawable/bg_count"
+                                        android:fontFamily="@font/mbold"
+                                        android:gravity="center"
+                                        android:padding="2dp"
+                                        android:text="10"
+                                        android:textColor="@color/whiteAbsolute"
+                                        android:textSize="12sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/mbold"
+                                        android:gravity="center"
+                                        android:padding="2dp"
+                                        android:text="Cases"
+                                        android:textColor="@color/blackPrimary"
+                                        android:textSize="12sp" />
+
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:fontFamily="@font/mbold"
+                                    android:gravity="center"
+                                    android:padding="2dp"
+                                    android:text="Jakarta"
+                                    android:textColor="@color/blackPrimary"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/jakarta_ic" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </io.github.florent37.shapeofview.shapes.RoundRectView>
+                        <io.github.florent37.shapeofview.shapes.RoundRectView
+                            android:id="@+id/view2"
+                            android:background="@color/whiteSecondary"
+                            android:layout_marginEnd="24dp"
+                            android:layout_width="227dp"
+                            android:layout_height="180dp"
+                            app:shape_roundRect_bottomLeftRadius="10dp"
+                            app:shape_roundRect_bottomRightRadius="10dp"
+                            app:shape_roundRect_topLeftRadius="10dp"
+                            app:shape_roundRect_topRightRadius="10dp">
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="wrap_content"
+                                android:background="@color/whiteSecondary"
+                                android:layout_height="180dp">
+
+                                <ImageView
+                                    android:id="@+id/bogor_ic"
+                                    android:layout_width="227dp"
+                                    android:layout_height="150dp"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/ic_city_bogor" />
+
+                                <LinearLayout
+                                    android:gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent">
+
+                                    <TextView
+                                        android:id="@+id/tv_bogor"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:background="@drawable/bg_count"
+                                        android:fontFamily="@font/mbold"
+                                        android:gravity="center"
+                                        android:padding="2dp"
+                                        android:text="10"
+                                        android:textColor="@color/whiteAbsolute"
+                                        android:textSize="12sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/mbold"
+                                        android:gravity="center"
+                                        android:padding="2dp"
+                                        android:text="Cases"
+                                        android:textColor="@color/blackPrimary"
+                                        android:textSize="12sp" />
+
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:fontFamily="@font/mbold"
+                                    android:gravity="center"
+                                    android:padding="2dp"
+                                    android:text="Bogor"
+                                    android:textColor="@color/blackPrimary"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/bogor_ic" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </io.github.florent37.shapeofview.shapes.RoundRectView>
+                        <io.github.florent37.shapeofview.shapes.RoundRectView
+                            android:id="@+id/view3"
+                            android:background="@color/whiteSecondary"
+                            android:layout_marginEnd="24dp"
+                            android:layout_width="227dp"
+                            android:layout_height="180dp"
+                            app:shape_roundRect_bottomLeftRadius="10dp"
+                            app:shape_roundRect_bottomRightRadius="10dp"
+                            app:shape_roundRect_topLeftRadius="10dp"
+                            app:shape_roundRect_topRightRadius="10dp">
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="wrap_content"
+                                android:background="@color/whiteSecondary"
+                                android:layout_height="180dp">
+
+                                <ImageView
+                                    android:id="@+id/depok_ic"
+                                    android:layout_width="227dp"
+                                    android:layout_height="150dp"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/ic_city_depok" />
+
+                                <LinearLayout
+                                    android:gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent">
+
+                                    <TextView
+                                        android:id="@+id/tv_depok"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:background="@drawable/bg_count"
+                                        android:fontFamily="@font/mbold"
+                                        android:gravity="center"
+                                        android:padding="2dp"
+                                        android:text="10"
+                                        android:textColor="@color/whiteAbsolute"
+                                        android:textSize="12sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/mbold"
+                                        android:gravity="center"
+                                        android:padding="2dp"
+                                        android:text="Cases"
+                                        android:textColor="@color/blackPrimary"
+                                        android:textSize="12sp" />
+
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:fontFamily="@font/mbold"
+                                    android:gravity="center"
+                                    android:padding="2dp"
+                                    android:text="Depok"
+                                    android:textColor="@color/blackPrimary"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/depok_ic" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </io.github.florent37.shapeofview.shapes.RoundRectView>
+                        <io.github.florent37.shapeofview.shapes.RoundRectView
+                            android:id="@+id/view4"
+                            android:background="@color/whiteSecondary"
+                            android:layout_marginEnd="24dp"
+                            android:layout_width="227dp"
+                            android:layout_height="180dp"
+                            app:shape_roundRect_bottomLeftRadius="10dp"
+                            app:shape_roundRect_bottomRightRadius="10dp"
+                            app:shape_roundRect_topLeftRadius="10dp"
+                            app:shape_roundRect_topRightRadius="10dp">
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="wrap_content"
+                                android:background="@color/whiteSecondary"
+                                android:layout_height="180dp">
+
+                                <ImageView
+                                    android:id="@+id/tanggerang_ic"
+                                    android:layout_width="227dp"
+                                    android:layout_height="150dp"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/ic_city_tanggerang" />
+
+                                <LinearLayout
+                                    android:gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent">
+
+                                    <TextView
+                                        android:id="@+id/tv_tanggerang"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:background="@drawable/bg_count"
+                                        android:fontFamily="@font/mbold"
+                                        android:gravity="center"
+                                        android:padding="2dp"
+                                        android:text="10"
+                                        android:textColor="@color/whiteAbsolute"
+                                        android:textSize="12sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/mbold"
+                                        android:gravity="center"
+                                        android:padding="2dp"
+                                        android:text="Cases"
+                                        android:textColor="@color/blackPrimary"
+                                        android:textSize="12sp" />
+
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:fontFamily="@font/mbold"
+                                    android:gravity="center"
+                                    android:padding="2dp"
+                                    android:text="Tanggerang"
+                                    android:textColor="@color/blackPrimary"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/tanggerang_ic" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </io.github.florent37.shapeofview.shapes.RoundRectView>
+                        <io.github.florent37.shapeofview.shapes.RoundRectView
+                            android:id="@+id/view5"
+                            android:background="@color/whiteSecondary"
+                            android:layout_marginEnd="24dp"
+                            android:layout_width="227dp"
+                            android:layout_height="180dp"
+                            app:shape_roundRect_bottomLeftRadius="10dp"
+                            app:shape_roundRect_bottomRightRadius="10dp"
+                            app:shape_roundRect_topLeftRadius="10dp"
+                            app:shape_roundRect_topRightRadius="10dp">
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="wrap_content"
+                                android:background="@color/whiteSecondary"
+                                android:layout_height="180dp">
+
+                                <ImageView
+                                    android:id="@+id/bekasi_ic"
+                                    android:layout_width="227dp"
+                                    android:layout_height="150dp"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/ic_city_bekasi" />
+
+                                <LinearLayout
+                                    android:gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent">
+
+                                    <TextView
+                                        android:id="@+id/tv_bekasi"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:background="@drawable/bg_count"
+                                        android:fontFamily="@font/mbold"
+                                        android:gravity="center"
+                                        android:padding="2dp"
+                                        android:text="10"
+                                        android:textColor="@color/whiteAbsolute"
+                                        android:textSize="12sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/mbold"
+                                        android:gravity="center"
+                                        android:padding="2dp"
+                                        android:text="Cases"
+                                        android:textColor="@color/blackPrimary"
+                                        android:textSize="12sp" />
+
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:fontFamily="@font/mbold"
+                                    android:gravity="center"
+                                    android:padding="2dp"
+                                    android:text="Bekasi"
+                                    android:textColor="@color/blackPrimary"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/bekasi_ic" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </io.github.florent37.shapeofview.shapes.RoundRectView>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
 
             <TextView
+                android:layout_marginStart="20dp"
                 style="@style/viewParent.headerText"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/mbold"
-                android:text="Featured" />
+                android:text="feat" />
 
             <androidx.cardview.widget.CardView
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="120dp"
                 android:layout_marginTop="20dp"
                 app:cardCornerRadius="15dp"
                 app:cardPreventCornerOverlap="true">
@@ -99,180 +520,67 @@
 
                     <ImageView
                         style="@style/homeCardImage"
-                        android:maxHeight="90dp"
-                        android:src="@drawable/dashboard_icon_find" />
+                        android:padding="10dp"
+                        android:layout_width="140dp"
+                        android:layout_height="140dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/featured_report" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
-
-            <!--if the second one is used as model for recyclerView, refer:
-            https://appsnipp.com/gradient-layout-for-dynamic-gradients-in-android-without-drawable-library/
-            -->
-
             <androidx.cardview.widget.CardView
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="20dp"
                 app:cardCornerRadius="15dp"
-                app:cardPreventCornerOverlap="true">
+                app:cardBackgroundColor="@color/whiteSecondary">
 
-                <net.colindodd.gradientlayout.GradientRelativeLayout
+                <RelativeLayout
                     android:id="@+id/CardView1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@color/whiteSecondary"
                     android:minHeight="100dp"
-                    android:padding="10dp"
-                    gl:end_color="@color/gradientOrange"
-                    gl:orientation="LEFT_RIGHT"
-                    gl:start_color="@color/gradientLightYellow">
+                    android:padding="10dp">
 
                     <TextView
-                        android:fontFamily="@font/mbold"
-                        android:id="@+id/textViewSub2Title"
+                        android:id="@+id/textViewSub1Title2"
+                        android:textColor="@color/blackPrimary"
                         style="@style/viewParent.headerText.HomeCardTitle"
-                        android:text="Found People" />
+                        android:fontFamily="@font/mbold"
+                        android:text="About" />
 
                     <TextView
+                        android:textColor="@color/blackPrimary"
                         android:fontFamily="@font/mregular"
                         style="@style/viewParent.headerText.homeCardContent"
-                        android:layout_below="@id/textViewSub2Title"
-                        android:text="You've found missing people?,\nfill the data for help others" />
+                        android:layout_below="@id/textViewSub1Title2"
+                        android:text="Developers information and profile" />
 
                     <ImageView
                         style="@style/homeCardImage"
-                        android:maxHeight="90dp"
-                        android:src="@drawable/dashboard_icon_found" />
+                        android:padding="10dp"
+                        android:layout_width="140dp"
+                        android:layout_height="140dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/featured_devs" />
 
-                </net.colindodd.gradientlayout.GradientRelativeLayout>
+                </RelativeLayout>
             </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:cardCornerRadius="15dp"
-                app:cardPreventCornerOverlap="true">
-
-                <net.colindodd.gradientlayout.GradientRelativeLayout
-                    android:id="@+id/CardView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:minHeight="100dp"
-                    android:padding="10dp"
-                    gl:end_color="@color/gradientLightBlue"
-                    gl:orientation="LEFT_RIGHT"
-                    gl:start_color="@color/gradientViolet">
-
-                    <TextView
-                        android:fontFamily="@font/mbold"
-                        android:id="@+id/textViewSub5Title"
-                        style="@style/viewParent.headerText.HomeCardTitle"
-                        android:text="Portal News" />
-
-                    <TextView
-                        android:fontFamily="@font/mregular"
-                        style="@style/viewParent.headerText.homeCardContent"
-                        android:layout_below="@id/textViewSub5Title"
-                        android:text="The Portal of News about\nThe Missing People in Indonesia" />
-
-                    <ImageView
-                        style="@style/homeCardImage"
-                        android:maxHeight="90dp"
-                        android:src="@drawable/dashboard_icon_portal" />
-
-                </net.colindodd.gradientlayout.GradientRelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:minHeight="100dp"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_marginEnd="5dp"
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="15dp"
-                    app:cardBackgroundColor="@color/whiteSecondary"
-                    app:cardPreventCornerOverlap="true"
-                    android:layout_marginTop="10dp">
-
-                    <RelativeLayout
-                        android:id="@+id/CardView3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:minHeight="100dp">
-
-                        <ImageView
-                            android:scaleType="centerCrop"
-                            android:layout_height="100dp"
-                            android:layout_width="match_parent"
-                            android:src="@drawable/illu_vector_settings"
-                            />
-
-                        <TextView
-                            android:layout_alignParentBottom="true"
-                            android:layout_height="20dp"
-                            android:background="@color/blackPrimary"
-                            android:id="@+id/textViewSub6Title"
-                            android:fontFamily="@font/mbold"
-                            android:text="SETTINGS"
-                            android:textAlignment="center"
-                            android:textColor="@color/whitePrimary"
-                            android:layout_width="match_parent"
-                            android:elevation="1dp"
-                            android:textSize="16sp"/>
-
-
-                    </RelativeLayout>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:layout_marginEnd="5dp"
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="15dp"
-                    app:cardBackgroundColor="@color/whiteSecondary"
-                    app:cardPreventCornerOverlap="true"
-                    android:layout_marginTop="10dp">
-
-                    <RelativeLayout
-                        android:id="@+id/CardView4"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:minHeight="100dp">
-
-                        <ImageView
-                            android:paddingTop="20dp"
-                            android:scaleType="centerCrop"
-                            android:layout_height="100dp"
-                            android:layout_width="match_parent"
-                            android:src="@drawable/illu_ciank_sentdata"
-                            />
-
-                        <TextView
-                            android:layout_alignParentBottom="true"
-                            android:layout_height="20dp"
-                            android:background="@color/blackPrimary"
-                            android:id="@+id/textViewSub7Title"
-                            android:fontFamily="@font/mbold"
-                            android:text="HELP"
-                            android:textAlignment="center"
-                            android:textColor="@color/whitePrimary"
-                            android:layout_width="match_parent"
-                            android:elevation="1dp"
-                            android:textSize="16sp"/>
-
-
-                    </RelativeLayout>
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-
-
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <FrameLayout
+            android:background="@color/whiteSecondary"
+            android:id="@+id/bottom_sheet"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
 
     <item
         android:id="@+id/nav_menu"
-        android:icon="@android:drawable/ic_menu_sort_by_size"
-        android:title="Menu" />
+        android:icon="@drawable/ic_baseline_sort_24" />
 
     <item
         android:id="@+id/nav_portal"
-        android:icon="@drawable/ic_baseline_web_24"
-        android:title="Portal" />
+        android:icon="@drawable/ic_baseline_web_24" />
 
     <item
         android:id="@+id/nav_home"
-        android:icon="@drawable/ic_home"
-        android:title="Dashboard" />
+        android:icon="@drawable/ic_home"/>
 
     <item
         android:id="@+id/nav_help"
-        android:icon="@drawable/ic_baseline_help_24"
-        android:title="Help" />
+        android:icon="@drawable/ic_baseline_help_24" />
 
     <item
         android:id="@+id/nav_profile"
-        android:icon="@drawable/ic_user"
-        android:title="Profile" />
+        android:icon="@drawable/ic_user"/>
 
 </menu>

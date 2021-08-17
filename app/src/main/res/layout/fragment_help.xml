@@ -7,16 +7,9 @@
     android:background="@color/lavender"
     tools:context=".FragmentHelp">
 
-    <View
-        android:id="@+id/view5"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:background="@color/flowerblue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:elevation="1dp"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,14 +22,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:paddingEnd="40dp"
-        android:paddingTop="50dp"
+    <io.github.florent37.shapeofview.shapes.RoundRectView
+        android:id="@+id/view5"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/illu_flumf_support"
-        app:layout_constraintBottom_toBottomOf="@+id/view5" />
+        android:layout_height="300dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shape_roundRect_bottomLeftRadius="40dp">
+
+        <View
+            android:id="@+id/fragment_help_illu"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@color/flowerblue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_marginTop="100dp"
+            android:paddingEnd="40dp"
+            android:paddingTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/illu_flumf_support"
+            app:layout_constraintBottom_toBottomOf="@+id/fragment_help_illu"/>
+
+    </io.github.florent37.shapeofview.shapes.RoundRectView>
 
     <TextView
         android:id="@+id/textView3"
@@ -91,7 +105,7 @@
                 android:fontFamily="@font/mbold"
                 android:text="FAQs"
                 android:textColor="@color/blackPrimary"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/icon"
                 app:layout_constraintTop_toTopOf="@+id/icon" />
@@ -101,11 +115,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
+                android:layout_marginTop="4dp"
                 android:fontFamily="@font/mregular"
                 android:text="Find intelligent answers instantly"
                 android:textColor="@color/blackPrimary"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:textSize="13sp"
                 app:layout_constraintStart_toEndOf="@+id/icon"
                 app:layout_constraintTop_toBottomOf="@+id/title" />
 
@@ -127,6 +141,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
+            android:id="@+id/cs_wa"
             android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:layout_weight="1"
@@ -148,6 +163,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/cs_email"
             android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:layout_weight="1"
@@ -169,6 +185,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/cs_fb"
             android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:layout_weight="1"
@@ -190,6 +207,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/cs_tw"
             android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:layout_weight="1"

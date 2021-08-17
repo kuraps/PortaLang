@@ -1,87 +1,171 @@
 package com.tcodng.portalang;
 
-import android.content.Context;
+import android.app.SearchManager;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
+import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
+import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.github.ybq.android.spinkit.sprite.Sprite;
-import com.github.ybq.android.spinkit.style.Wave;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import net.colindodd.gradientlayout.GradientRelativeLayout;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
 import java.util.Calendar;
 
-import eightbitlab.com.blurview.BlurView;
-import eightbitlab.com.blurview.RenderScriptBlur;
+import static android.content.Context.MODE_PRIVATE;
 
 public class FragmentHome extends Fragment{
 
-    View fragmentView;
-    ArrayList<FragmentHomeModelCity> arrayList;
-    RecyclerView recyclerView;
-    int city_icon[] = {R.drawable.ic_city_depok,R.drawable.ic_city_bogor};
-    String city_name[] = {"Depok", "Bogor"};
-    String city_cases[] = {"14 Cases", "10 Cases"};
+    DatabaseReference reference,ref_bogor,ref_depok,ref_jakarta,ref_tanggerang,ref_bekasi;
+    String USERNAME_KEY = "usernamekey";
+    String username_key = "";
+    String username_key_new = "";
+    ImageView avatar;
+    TextView settings_app,jakarta_tv,bogor_tv,depok_tv,tanggerang_tv,bekasi_tv;
 
+    BottomSheetBehavior sheetBehavior;
+    BottomSheetDialog sheetDialog;
+    View bottom_sheet;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+        jakarta_tv = (TextView) rootView.findViewById(R.id.tv_jakarta);
+        bogor_tv = (TextView) rootView.findViewById(R.id.tv_bogor);
+        depok_tv = (TextView) rootView.findViewById(R.id.tv_depok);
+        tanggerang_tv = (TextView) rootView.findViewById(R.id.tv_tanggerang);
+        bekasi_tv = (TextView) rootView.findViewById(R.id.tv_bekasi);
+        avatar = (ImageView) rootView.findViewById(R.id.avatar);
+        ref_jakarta = FirebaseDatabase.getInstance().getReference()
+                .child("CityCases").child("Jakarta");
+        ref_jakarta.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot Snapshot : dataSnapshot.getChildren()) {
 
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.city_adapter);
-        arrayList = new ArrayList<>();
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        for (int i = 0; i < city_icon.length; i++) {
-            FragmentHomeModelCity cityModel = new FragmentHomeModelCity();
-            cityModel.setImage(city_icon[i]);
-            cityModel.setName(city_name[i]);
-            cityModel.setCases(city_cases[i]);
+                    long count = dataSnapshot.getChildrenCount();
+                    String strLong = Long.toString(count);
+                    jakarta_tv.setText(strLong);
+                }
+            }
 
-            //add in array list
-            arrayList.add(cityModel);
-        }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-        FragmentHomeAdapterCity adapter = new FragmentHomeAdapterCity(getActivity(), arrayList);
-        recyclerView.setAdapter(adapter);
+            }
+        });
+        ref_bogor = FirebaseDatabase.getInstance().getReference()
+                .child("CityCases").child("Bogor");
+        ref_bogor.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot Snapshot : dataSnapshot.getChildren()) {
+
+                    long count = dataSnapshot.getChildrenCount();
+                    String strLong = Long.toString(count);
+                    bogor_tv.setText(strLong);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        ref_depok = FirebaseDatabase.getInstance().getReference()
+                .child("CityCases").child("Depok");
+        ref_depok.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot Snapshot : dataSnapshot.getChildren()) {
+
+                    long count = dataSnapshot.getChildrenCount();
+                    String strLong = Long.toString(count);
+                    depok_tv.setText(strLong);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        ref_tanggerang = FirebaseDatabase.getInstance().getReference()
+                .child("CityCases").child("Tanggerang");
+        ref_tanggerang.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot Snapshot : dataSnapshot.getChildren()) {
+
+                    long count = dataSnapshot.getChildrenCount();
+                    String strLong = Long.toString(count);
+                    tanggerang_tv.setText(strLong);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        ref_bekasi = FirebaseDatabase.getInstance().getReference()
+                .child("CityCases").child("Bekasi");
+        ref_bekasi.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot Snapshot : dataSnapshot.getChildren()) {
+
+                    long count = dataSnapshot.getChildrenCount();
+                    String strLong = Long.toString(count);
+                    bekasi_tv.setText(strLong);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         // BARIS BARU
 
         TextView greetings = (TextView) rootView.findViewById(R.id.greetings);
+        TextView name = (TextView) rootView.findViewById(R.id.name);
+        TextView bio = (TextView) rootView.findViewById(R.id.bio);
+        bottom_sheet = rootView.findViewById(R.id.bottom_sheet);
+        sheetBehavior = BottomSheetBehavior.from(bottom_sheet);
 
-        Calendar c = Calendar.getInstance();
-        int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
-        if (timeOfDay >= 0 && timeOfDay < 12) {
-            greetings.setText(getResources().getString(R.string.goodmorning));
-        } else if (timeOfDay >= 12 && timeOfDay < 16) {
-            greetings.setText(getResources().getString(R.string.goodafternoon));
-        } else if (timeOfDay >= 16 && timeOfDay < 21) {
-            greetings.setText(getResources().getString(R.string.goodevening));
-        } else if (timeOfDay >= 21 && timeOfDay < 24) {
-            greetings.setText(getResources().getString(R.string.goodnight));
-        }
+
+        TextView SettingsApp = (TextView) rootView.findViewById(R.id.settings_app);
+        SettingsApp.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent settingapp = new Intent(getActivity(), Settings.class);
+                startActivity(settingapp);
+            }
+        });
 
         RelativeLayout CardView0 = (RelativeLayout) rootView.findViewById(R.id.CardView0);
         CardView0.setOnClickListener(new OnClickListener()
@@ -94,41 +178,91 @@ public class FragmentHome extends Fragment{
                 startActivity(reportMissing);
             }
         });
-        GradientRelativeLayout CardView1 = (GradientRelativeLayout) rootView.findViewById(R.id.CardView1);
+        RelativeLayout CardView1 = (RelativeLayout) rootView.findViewById(R.id.CardView1);
         CardView1.setOnClickListener(new OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
                 // do something
-                Intent reportMissing = new Intent(getActivity(), UserReportFoundingA.class);
-                startActivity(reportMissing);
+                showBottomSheetDialog();
             }
         });
-        GradientRelativeLayout CardView2 = (GradientRelativeLayout) rootView.findViewById(R.id.CardView2);
-        CardView2.setOnClickListener(new OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                // do something
-               // Toast.makeText(getActivity(),"Text!",Toast.LENGTH_SHORT).show();
-                Intent portalBerita = new Intent(getActivity(), UserPortal.class);
-                startActivity(portalBerita);
-            }
-        });
-        RelativeLayout CardView3 = (RelativeLayout) rootView.findViewById(R.id.CardView3);
 
-        CardView3.setOnClickListener(new OnClickListener() {
+        getUsernameLocal();
+        reference = FirebaseDatabase.getInstance().getReference()
+                .child("Users").child(username_key_new);
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot Snapshot : dataSnapshot.getChildren()) {
+                    name.setText(dataSnapshot.child("name").getValue().toString());
+                    bio.setText(dataSnapshot.child("bio").getValue().toString());
+                    Picasso.with(getActivity())
+                            .load(dataSnapshot.child("avatar").getValue().toString())
+                            .centerCrop()
+                            .fit()
+                            .placeholder(R.drawable.icon_nopic).error(R.drawable.icon_nopic)
+                            .into(avatar);
+                    Calendar c = Calendar.getInstance();
+                    int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
+                        if (timeOfDay < 12) {
+                            greetings.setText(rootView.getResources().getString(R.string.goodmorning));
+                        }
+                        else if (timeOfDay < 16) {
+                            greetings.setText(rootView.getResources().getString(R.string.goodafternoon));
+                        }
+                        else if (timeOfDay < 21) {
+                            greetings.setText(rootView.getResources().getString(R.string.goodevening));
+                        }
+                        else if(timeOfDay > 21){
+                            greetings.setText(rootView.getResources().getString(R.string.goodnight));
+                        }
+                    }
+                }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+        return rootView;
+    }
+
+    public void getUsernameLocal(){
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences(USERNAME_KEY, MODE_PRIVATE);
+        username_key_new = sharedPreferences.getString(username_key, "");
+    }
+
+    private void showBottomSheetDialog() {
+        View view = getLayoutInflater().inflate(R.layout.sheet_about, null);
+
+        if (sheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
+            sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        }
+
+        (view.findViewById(R.id.cancel)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent settings = new Intent(getActivity(), Settings.class);
-                startActivity(settings);
+                sheetDialog.dismiss();
             }
         });
 
-        RelativeLayout CardView4 = (RelativeLayout) rootView.findViewById(R.id.CardView4);
-        return rootView;
+        sheetDialog = new BottomSheetDialog(getActivity());
+        sheetDialog.setContentView(view);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            sheetDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+
+        sheetDialog.show();
+        sheetDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                sheetDialog = null;
+            }
+        });
     }
 
 }

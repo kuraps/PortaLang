@@ -1,7 +1,6 @@
 package com.tcodng.portalang;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -26,7 +25,6 @@ public class UserRegisterSuccess extends AppCompatActivity {
 
         if (!isNetworkAvailable(this)) {
             Toast.makeText(this, "No Internet connection", Toast.LENGTH_LONG).show();
-            // pindah activty lain
             Intent gogetStarted = new Intent(UserRegisterSuccess.this, NoInternet.class);
             startActivity(gogetStarted);
             finish();
@@ -35,19 +33,16 @@ public class UserRegisterSuccess extends AppCompatActivity {
         top_to_bottom = AnimationUtils.loadAnimation(this, R.anim.top_to_bottom);
         bottom_to_top = AnimationUtils.loadAnimation(this, R.anim.bottom_to_top);
         floating = AnimationUtils.loadAnimation(this, R.anim.floating);
-
         tv1 = findViewById(R.id.txt1);
         tv2 = findViewById(R.id.txt2);
         img1 = findViewById(R.id.icon_illu);
         btn1 = findViewById(R.id.btn1);
         tv3= findViewById(R.id.btn2);
-
         tv1.startAnimation(top_to_bottom);
         tv2.startAnimation(top_to_bottom);
         img1.startAnimation(floating);
         btn1.startAnimation(bottom_to_top);
         tv3.startAnimation(bottom_to_top);
-
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,7 +53,7 @@ public class UserRegisterSuccess extends AppCompatActivity {
                 startActivity(launchIntent);
             }
         });
-        tv1.setOnClickListener(new View.OnClickListener() {
+        tv3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent shareIntent = new Intent();
